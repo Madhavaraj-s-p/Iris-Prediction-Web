@@ -1,0 +1,35 @@
+body{
+    background-color: rgb(65, 65, 65);
+    background-image: url('iris_bg3.jpg');
+    font-family:'Snell Roundhand Script', cursive;
+    font-style: italic;
+    color: rgb(19, 19, 19);
+    text-shadow: 4px 4px 4px #ffffff;
+}
+
+h1{
+    font-size:xx-large;
+    font-weight: bold;
+}
+input.b1{
+    background-color: #7cfc00;
+    border-radius: 25px;  
+}
+
+input{
+    background-color: transparent;
+    font-size: small;
+    border-radius: 5px;
+    border-width: 0.5px;
+    margin-bottom: 10px;
+    border-color: dimgray;
+    color: rgb(20, 19, 19);
+    text-shadow:2px 2px 3px #ffffff;
+}
+span.inp{
+    font-size: 20px;
+}
+h2{
+    font-size: small;
+}
+

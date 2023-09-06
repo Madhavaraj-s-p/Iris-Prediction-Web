@@ -1,0 +1,10 @@
+body
+{
+    background-image: url('iris_bg3.jpg');
+    text-shadow: 2px 3px 4px white;
+    padding: 100px;
+}
+
+span.output{
+    color: blueviolet;
+}

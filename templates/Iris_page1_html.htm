@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Iris Species Prediction
+    </title>
+    <link rel="icon" href="{{url_for('static',filename='flower.png')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='iris_css.css')}}">
+</head>
+<body>
+    
+    <center>
+        <h1>
+            Iris Flower Species Prediction
+        </h1>
+        <img src="{{url_for('static',filename='iris_new.png')}}" width="450px" alt="Error Loading "><br>
+        <form action = '/home' method="post">
+            Iris Flower <br><br>
+            <span class = 'inp' >Sepel Length</span> <input  type="number" step="0.01" placeholder="Sepel Length" id="Sepel_Length" name = 'Sepel_Length'>cm <br>
+            <span class = 'inp' >Sepel Width</span> <input  type="number"  step="0.01" placeholder="Sepel Width" id="Sepel_Width" name = 'Sepel_Width'>cm  <br>
+            <span class = 'inp' >Petal Length</span> <input  type="number" step="0.01"  placeholder="Petal Length" id="Petal_Length" name = 'Petal_Length'>cm   <br>
+            <span class = 'inp' >Petal Width</span><input  type="number"  step="0.01" placeholder="Petal width" id="Petal_Width" name = 'Petal_Width'>cm  <br>
+            <input class = "b1" type="submit" id="b1" onclick="inputs()"></input>
+    </center>
+
+<script src="{{url_for('static',filename='iris_js.js')}}"></script>
+</body>
+</html>

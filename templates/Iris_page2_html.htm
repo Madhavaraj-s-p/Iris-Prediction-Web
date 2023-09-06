@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='iris_page2_css.css')}}">
+</head>
+<body>
+    <center>
+    <form action="/result" method="post">
+        <h2>The Predicted Species for given input is </h2>
+        <span class = 'output'><h1>{{ pred }}</h1></span>
+        <h2>{{ sl }}</h2>
+        <h2>{{ sw }}</h2>
+        <h2>{{ pl }}</h2>
+        <h2>{{ pw }}</h2>
+    </form>
+    </center>
+
+</body>
+</html>
