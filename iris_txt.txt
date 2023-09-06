@@ -1,0 +1,153 @@
+HTML:-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Iris Species Prediction
+    </title>
+    <link rel="icon" href='flower.png'>
+    <link rel="stylesheet" href="iris_css.css">
+</head>
+<body>
+    <button class = "b2">i</button>
+    <center>
+        <h1>
+            Iris Flower Species Prediction
+        </h1>
+        <img src="iris_new.png" width="450px" alt="Error Loading "><br>
+        <form>
+            Iris Flower <br><br>
+            Sepel Length <input type="number">cm  <br>
+            Sepel width <input type="number"> cm <br>
+            Petal Length <input type="number">cm  <br>
+            Petal width <input type="number"> cm <br>
+            <button class="b1"> submit</button>
+            <hr>
+            <h2>The Species is:</h2>
+        </form>
+    </center>
+</body>
+
+CSS:-
+
+body{
+    background-color:  rgba(32, 33, 36, 0.912);
+    font-family:'Snell Roundhand Script', cursive;
+    font-style: italic;
+    color: whitesmoke;
+}
+
+h1{
+    font-size:xx-large;
+    font-weight: bold;
+}
+button.b1{
+    background-color: #7cfc00;
+    border-radius: 25px;  
+}
+
+input{
+    background-color: transparent;
+    font-size: small;
+    border-radius: 5px;
+    border-width: 0.5px;
+    margin-bottom: 10px;
+    border-color: dimgray;
+    color: whitesmoke;
+}
+
+h2{
+    font-size: small;
+}
+
+button.b2{
+    color: white;
+    border-radius: 50px;
+    border-color: white;
+    background-color: transparent;
+    padding-right: 7px;
+    padding-left: 7px;
+    border-width: .5px;
+    position: absolute;
+    right: 20px;
+}
+
+
+PYTHON:-
+
+
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LogisticRegression
+
+iris = pd.read_csv('python/Machine_Learning/CSV_Files/Iris.csv')
+
+X = iris.drop('species',axis = 1)
+y = iris.species
+
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.5)
+
+lr = LogisticRegression()
+
+lr.fit(X_train,y_train)
+
+pred = lr.predict([[5.1,3.5,1.4,0.2]])
+
+print(f'The Species is:{pred}')
+
+python Flask
+
+#importing
+from flask import Flask,redirect,url_for,render_template,request,flash,get_flashed_messages
+
+#In this code,we creating instance of class Flask with __name__  which is default shortcut for rendering template and locate url
+app = Flask(__name__)
+app.secret_key = "Madhavaraj"
+
+@app.route('/')
+@app.route('/home', methods=['POST'])
+def home():
+    if request.method == 'POST':
+        global Sepel_W,Sepel_L,Petal_L,Petal_W
+        Sepel_L = request.form.get('Sepel_Length')
+        Sepel_W = request.form.get('Sepel_Width')
+        Petal_L = request.form.get('Sepel_Length')
+        Petal_W = request.form.get('Petal_Width')
+
+        print(f'Sepel Length is {Sepel_L}')
+        print(f'Sepel Widht is {Sepel_W}')
+        print(f'Petal Length is {Petal_L}')
+        print(f'Petal Widht is {Petal_W}')
+        def main_program():
+            import pandas as pd
+            import numpy as np
+            from sklearn.model_selection import train_test_split
+            from sklearn.linear_model import LogisticRegression
+
+            iris = pd.read_csv('python/Machine_Learning/CSV_Files/Iris.csv')
+
+            X = iris.drop('species',axis = 1)
+            y = iris.species
+
+            X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=.5)
+
+            lr = LogisticRegression()
+
+            lr.fit(X_train,y_train)
+
+
+            global pred
+            pred = lr.predict([[float(Sepel_L),float(Sepel_W),float(Petal_L),float(Petal_W)]]) # type: ignore
+
+            pred = np.array2string(pred)
+            print(type(pred))
+            print(f'The Species is:{pred}')
+        main_program()
+    return render_template('Iris_html.htm',pred = pred)
+
+if __name__ == '__main__': 
+    app.run(debug=True)
